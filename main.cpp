@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
-        const QString baseName = "eosquickstart_" + QLocale(locale).name();
+        const QString baseName = "parchquickstart_" + QLocale(locale).name();
         if (translator.load(":/i18n/" + baseName)) {
             app.installTranslator(&translator);
             break;
         }
     }
 
-    QSettings settings("/etc/eos-quickstart.conf", QSettings::NativeFormat);
+    QSettings settings("/etc/parch-quickstart.conf", QSettings::NativeFormat);
 
     const Terminal preferredTerminal = {settings.value("PreferredTerminalPath").toString(), settings.value("PreferredTerminalArgs").toString()};
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty(QStringLiteral("packageModel"), &model);
     engine.rootContext()->setContextProperty(QStringLiteral("packageManager"), &packageManager);
-    const QUrl url(u"qrc:/eosquickstart/main.qml"_qs);
+    const QUrl url(u"qrc:/parchquickstart/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

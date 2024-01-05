@@ -5,7 +5,7 @@ ApplicationWindow {
     width: 600
     height: 800
     visible: true
-    title: qsTr("EndeavourOS QuickStart Installer")
+    title: qsTr("ParchLinux QuickStart Installer")
 
     SystemPalette { id: systemPalette; colorGroup: SystemPalette.Active }
 
